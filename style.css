@@ -1,0 +1,206 @@
+@font-face {
+  font-family: 'Gedak';
+  src: url('./fonts/Gedak Demo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Blenny';
+  src: url('./fonts/Blenny_Blk.menu_.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+  padding: 40px 60px;
+  background: linear-gradient(-45deg, #ff3b7c, #6a11cb, #2575fc, #ff8a00);
+  background-size: 400% 400%;
+  animation: liquidFlow 15s ease infinite;
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes liquidFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header h1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.title-top {
+  font-family: 'Gedak', sans-serif; 
+  font-size: 3.5rem;
+  letter-spacing: 4px;
+  font-weight: normal;
+}
+
+.title-bottom {
+  font-family: 'Gedak', sans-serif; 
+  font-size: 7.5rem;
+  letter-spacing: 2px;
+  line-height: 0.8;
+  font-weight: normal;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+.tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  flex-grow: 1;
+  max-width: 1000px;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.mute-btn {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.mute-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.mute-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.mute-btn.muted img {
+  opacity: 0.4;
+  filter: grayscale(80%); 
+}
+
+.mute-btn.muted {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.slider-wrapper {
+  position: relative;
+  flex-grow: 1;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.1), 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+}
+
+input[type=range] {
+  width: 100%;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* 圓形滑塊的玻璃反光質感設定 */
+input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    inset 2px 2px 6px rgba(255, 255, 255, 0.9), 
+    inset -2px -2px 6px rgba(0, 0, 0, 0.1), 
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(0.95);
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    inset 2px 2px 6px rgba(255, 255, 255, 0.9), 
+    inset -2px -2px 6px rgba(0, 0, 0, 0.1), 
+    0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.vol-text {
+  font-family: 'Blenny', sans-serif;
+  position: absolute;
+  left: 0;
+  width: 66px;
+  height: 66px;
+  line-height: 66px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: normal;
+  color: #222222;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.clock {
+  font-family: 'Blenny', sans-serif; 
+  font-size: 10rem;
+  font-weight: normal;
+  padding-top: 10px;
+  width: 680px; /* 固定寬度，防範秒數跳動造成的畫面抖動 */
+  flex-shrink: 0; /* 阻止外框收縮 */
+  font-variant-numeric: tabular-nums; /* 啟動等寬數字特性 */
+  text-align: right;
+  letter-spacing: 5px;
+  color: #ffffff;
+  margin-left: auto;
+  text-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.2);
+}

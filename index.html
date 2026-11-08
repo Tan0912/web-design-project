@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambient Soundscape Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>
+      <span class="title-top">Ambient Soundscape</span>
+      <span class="title-bottom">Generator</span>
+    </h1>
+  </header>
+  
+  <main class="container">
+    <div class="tracks">
+      
+      <div class="track" data-id="water">
+        <button class="mute-btn muted" onclick="toggleMute('water')">
+          <img src="images/water.jpg" alt="水聲">
+        </button>
+        <div class="slider-wrapper">
+          <input type="range" id="slider-water" min="0" max="100" value="0" oninput="updateVolume('water', this.value)">
+          <span class="vol-text" id="text-water">0%</span>
+        </div>
+        <audio id="audio-water" src="sounds/water.wav" loop></audio>
+      </div>
+
+      <div class="track" data-id="fire">
+        <button class="mute-btn muted" onclick="toggleMute('fire')">
+          <img src="images/campfire.jpg" alt="柴火聲">
+        </button>
+        <div class="slider-wrapper">
+          <input type="range" id="slider-fire" min="0" max="100" value="0" oninput="updateVolume('fire', this.value)">
+          <span class="vol-text" id="text-fire">0%</span>
+        </div>
+        <audio id="audio-fire" src="sounds/campfire.wav" loop></audio>
+      </div>
+
+      <div class="track" data-id="cafe">
+        <button class="mute-btn muted" onclick="toggleMute('cafe')">
+          <img src="images/coffee.jpg" alt="咖啡廳">
+        </button>
+        <div class="slider-wrapper">
+          <input type="range" id="slider-cafe" min="0" max="100" value="0" oninput="updateVolume('cafe', this.value)">
+          <span class="vol-text" id="text-cafe">0%</span>
+        </div>
+        <audio id="audio-cafe" src="sounds/coffee.wav" loop></audio>
+      </div>
+
+      <div class="track" data-id="noise">
+        <button class="mute-btn muted" onclick="toggleMute('noise')">
+          <img src="images/white noise.jpg" alt="純白噪音">
+        </button>
+        <div class="slider-wrapper">
+          <input type="range" id="slider-noise" min="0" max="100" value="0" oninput="updateVolume('noise', this.value)">
+          <span class="vol-text" id="text-noise">0%</span>
+        </div>
+        <audio id="audio-noise" src="sounds/white noise.wav" loop></audio>
+      </div>
+      
+    </div>
+    
+    <div class="clock" id="clock-display">14:30:00</div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
